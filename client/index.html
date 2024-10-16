@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>HTML Form</title>
+    </head>
+    <body>
+        <form id="form">
+            <h1>Form</h1>
+            <div class="name-age-container">
+                <div class="name-container">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Enter name" />
+                    <p class="error" id="error-name">Name is invalid</p>
+                </div>
+                <div class="age-container">
+                    <label for="age">Age</label>
+                    <input type="number" name="age" id="age" placeholder="Enter Age" />
+                    <p class="error" id="error-age">Age cannot be empty</p>
+                </div>
+            </div>
+
+            <div class="mobile-email-container">
+                <div class="mobile-container">
+                    <label for="mobile">Mobile</label>
+                    <input type="number" name="mobile" id="mobile" placeholder="Enter Mobile number"/>
+                    <p class="error" id="error-mobile">
+                        Enter valid Mobile number
+                    </p>
+                </div>
+                <div class="email-container">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" placeholder="Enter Email"/>
+                    <p class="error" id="error-email">Enter valid Email</p>
+                </div>
+            </div>
+
+            <div class="secondary-phone-radio-container">
+                <div class="secondary-radio-container">
+                    <p>Has Secondary phone ?</p>
+                    <input
+                        type="radio"
+                        name="has-secondary"
+                        id="yes"
+                        value="yes"
+                        onchange="secondaryRadioHandler(this)"
+                    />
+                    <label for="yes">Yes</label>
+                    <input
+                        type="radio"
+                        name="has-secondary"
+                        id="no"
+                        value="no"
+                        onchange="secondaryRadioHandler(this)"
+                        checked
+                    />
+                    <label for="no">No</label>
+                </div>
+                <div class="secondary-phone-container">
+                    <label for="secondary-mobile">Mobile</label>
+                    <input
+                        type="number"
+                        name="secondary-mobile"
+                        id="secondary-mobile"
+                        placeholder="Enter Secondary Number"
+                    />
+                    <p class="error" id="error-secondary-mobile">
+                        Enter valid Mobile number
+                    </p>
+                </div>
+            </div>
+
+            <div class="gender-container">
+                <p>Gender</p>
+                <input type="radio" name="gender" id="male" value="male" >
+                <label for="male">Male</label>
+                <input type="radio" name="gender" id="female" value="female" >
+                <label for="female">Female</label>
+                <input type="radio" name="gender" id="other" value="other" >
+                <label for="other">Other</label>
+                <p class="error" id="error-gender">Select a Gender</p>
+            </div>
+
+            <div class="fav-technology-container">
+                <label for="fav-technology">Fav Technology:</label>
+                <select name="fav-technology" id="fav-technology">
+                    <option value="html">HTML</option>
+                    <option value="css">CSS</option>
+                    <option value="javascript">Javascript</option>
+                    <option value="react">React</option>
+                </select>
+            </div>
+            <button class="submit-button" type="submit">Submit</button>
+        </form>
+
+        <script src="script.js"></script>
+    </body>
+</html>
