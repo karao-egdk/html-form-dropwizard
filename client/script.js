@@ -10,6 +10,12 @@ const secondaryGroup = document.getElementsByClassName(
     "secondary-phone-container"
 );
 
+const patters = {
+    name: /^[a-z]+$/i,
+    email: /^[\w\-\.]+@([\w]+\.)[\w]{2,4}(\.[\w]{2,4})*$/g,
+    phoneNo: /^\d{10}$/,
+}
+
 let isSecondaryRadioChecked = false;
 
 const errors = document.getElementsByClassName("error");
@@ -52,9 +58,7 @@ const addDataLocalStorage = () => {
 
 // Validation for each input
 const isNameValid = () => {
-    const nameRegex = /^[a-z]+$/i;
-
-    const isValid = nameRegex.test(nameInput.value);
+    const isValid = patters.name.test(nameInput.value);
     if (!isValid) errorElVisibility("error-name", "block");
     else errorElVisibility("error-name", "none");
 
@@ -62,7 +66,7 @@ const isNameValid = () => {
 };
 
 const isAgeValid = () => {
-    const isValid = ageInput.value > 0;
+    const isValid = ageInput.value > 0 && ageInput.value < 101;
     if (!isValid) errorElVisibility("error-age", "block");
     else errorElVisibility("error-age", "none");
 
@@ -70,7 +74,7 @@ const isAgeValid = () => {
 };
 
 const isMobileValid = () => {
-    const isValid = mobileInput.value.toString().length === 10;
+    const isValid = patters.phoneNo.test(mobileInput.value);
     if (!isValid) errorElVisibility("error-mobile", "block");
     else errorElVisibility("error-mobile", "none");
 
@@ -78,8 +82,7 @@ const isMobileValid = () => {
 };
 
 const isEmailValid = () => {
-    const emailRegex = /^[\w\-\.]+@([\w]+\.)[\w]{2,4}(\.[\w]{2,4})*$/g;
-    const isValid = emailRegex.test(emailInput.value);
+    const isValid = patters.email.test(emailInput.value);
     if (!isValid) errorElVisibility("error-email", "block");
     else errorElVisibility("error-email", "none");
 
@@ -88,7 +91,7 @@ const isEmailValid = () => {
 
 const isSecondaryPhoneValid = () => {
     if (!isSecondaryRadioChecked) return true;
-    const isValid = secondaryPhone.value.toString().length === 10;
+    const isValid = patters.phoneNo.test(secondaryPhone.value);
     if (!isValid) errorElVisibility("error-secondary-mobile", "block");
     else errorElVisibility("error-secondary-mobile", "none");
 
