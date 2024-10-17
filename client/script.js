@@ -10,11 +10,9 @@ const secondaryGroup = document.getElementsByClassName(
     "secondary-phone-container"
 );
 
-const patters = {
-    name: /^[a-z]+$/i,
-    email: /^[\w\-\.]+@([\w]+\.)[\w]{2,4}(\.[\w]{2,4})*$/g,
-    phoneNo: /^\d{10}$/,
-}
+const nameRegex = /^[a-z]+$/i;
+const emailRegex = /^[\w\-\.]+@([\w]+\.)[\w]{2,5}(\.[\w]{2,5})*$/;
+const phoneNoRegex = /^\d{10}$/;
 
 let isSecondaryRadioChecked = false;
 
@@ -58,7 +56,7 @@ const addDataLocalStorage = () => {
 
 // Validation for each input
 const isNameValid = () => {
-    const isValid = patters.name.test(nameInput.value);
+    const isValid = nameRegex.test(nameInput.value);
     if (!isValid) errorElVisibility("error-name", "block");
     else errorElVisibility("error-name", "none");
 
@@ -74,7 +72,7 @@ const isAgeValid = () => {
 };
 
 const isMobileValid = () => {
-    const isValid = patters.phoneNo.test(mobileInput.value);
+    const isValid = phoneNoRegex.test(mobileInput.value);
     if (!isValid) errorElVisibility("error-mobile", "block");
     else errorElVisibility("error-mobile", "none");
 
@@ -82,7 +80,10 @@ const isMobileValid = () => {
 };
 
 const isEmailValid = () => {
-    const isValid = patters.email.test(emailInput.value);
+    console.log("em", emailInput.value);
+
+    const isValid = emailRegex.test(emailInput.value);
+    console.log(isValid);
     if (!isValid) errorElVisibility("error-email", "block");
     else errorElVisibility("error-email", "none");
 
@@ -91,7 +92,7 @@ const isEmailValid = () => {
 
 const isSecondaryPhoneValid = () => {
     if (!isSecondaryRadioChecked) return true;
-    const isValid = patters.phoneNo.test(secondaryPhone.value);
+    const isValid = phoneNoRegex.test(secondaryPhone.value);
     if (!isValid) errorElVisibility("error-secondary-mobile", "block");
     else errorElVisibility("error-secondary-mobile", "none");
 
